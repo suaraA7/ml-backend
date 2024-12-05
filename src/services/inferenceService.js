@@ -13,9 +13,9 @@ async function predictClassification(model, inputText) {
     const inputTensor = tf.tensor2d([inputArray], [1, 3]);
 
     // Validasi: Pastikan model tersedia
-    if (!model || typeof model.predict !== "function") {
-      throw new Error("Model tidak valid atau belum dimuat.");
-    }
+    // if (!model || typeof model.predict !== "function") {
+    //   throw new Error("Model tidak valid atau belum dimuat.");
+    // }
 
     // Prediksi menggunakan model
     const prediction = model.predict(inputTensor);
@@ -26,7 +26,7 @@ async function predictClassification(model, inputText) {
     prediction.dispose(); // Membersihkan tensor hasil prediksi
 
     // Definisi kelas output model
-    const classes = ["Kelas 1", "Kelas 2", "Kelas 3", "Kelas 4"];
+    const classes = ["normal", "severely stunting", "stunted", "tinggi"];
 
     // Tentukan confidence score dan label prediksi
     const confidenceScore = Math.max(...score) * 100;
