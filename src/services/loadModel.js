@@ -1,9 +1,11 @@
 const tf = require("@tensorflow/tfjs-node");
+
 async function loadModel() {
   //return tf.loadLayersModel(process.env.MODEL_URL);
-  console.log("Loading model from URL:", process.env.MODEL_URL);
+  const modelUrl = "file://models/model.json";
+  console.log("Loading model from URL:", modelUrl);
   try {
-    const model = await tf.loadLayersModel(process.env.MODEL_URL);
+    const model = await tf.loadLayersModel(modelUrl);
     console.log("Model successfully loaded!");
     return model;
   } catch (error) {
